@@ -1,0 +1,24 @@
+CREATE OR REPLACE FUNCTION public.karyawan_insert(
+	_nama character varying,
+	_id_dep character varying)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+	INSERT INTO public.karyawan
+	(
+		nama, 
+		id_dep
+	)
+	VALUES
+	(
+		_nama, 
+		_id_dep
+	);
+	IF FOUND THEN 
+		RETURN 1;
+	ELSE 
+		RETURN 0;
+	END IF;
+END
+$BODY$;

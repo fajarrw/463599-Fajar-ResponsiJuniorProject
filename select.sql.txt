@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION public.karyawan_select(
+	)
+    RETURNS TABLE(_id_karyawan integer, _nama character varying, _id_dep character varying) 
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+BEGIN
+	RETURN QUERY
+	SELECT id_karyawan, nama, id_dep from karyawan;
+END	
+$BODY$;

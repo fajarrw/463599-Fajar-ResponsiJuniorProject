@@ -1,0 +1,21 @@
+CREATE OR REPLACE FUNCTION public.karyawan_update(
+	_id_karyawan integer,
+	_nama character varying,
+	_id_dep character varying
+)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+BEGIN
+	UPDATE karyawan SET
+		nama=_nama,
+		id_dep=_id_dep
+	WHERE id_karyawan=_id_karyawan;
+	IF FOUND THEN 
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
+END
+$BODY$;
